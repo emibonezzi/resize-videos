@@ -17,9 +17,6 @@ module.exports = async function (req, res, next) {
     await new Promise((resolve, reject) => {
       ffmpeg(req.videoPath)
         .size("640x360")
-        .videoFilter(
-          "drawtext=text='TRUZGOALS':fontcolor=white:fontsize=45:x=320:y=40"
-        )
         .save(req.resizedVideoPath)
         .on("end", resolve)
         .on("error", reject);
